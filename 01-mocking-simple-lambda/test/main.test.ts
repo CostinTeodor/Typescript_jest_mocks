@@ -2,10 +2,6 @@ import { MyClass } from "../src/main";
 
 class MockedMyClass {
   myAttribute!: (param: string) => any;
-
-  // lambdaTest(fn: (param: string) => any) {
-  //   this.myAttribute = fn;
-  // }
 }
 
 describe("MockedMyClass", () => {
