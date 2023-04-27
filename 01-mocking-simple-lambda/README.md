@@ -1,0 +1,2 @@
+In this example, MyClass's lambdaTest method is being mocked with the spyOn method of jest. Afterwards, a new class is created called MockedMyClass and
+the lambda parameter in lambdaTest method is tested.
