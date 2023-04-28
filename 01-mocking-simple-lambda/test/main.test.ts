@@ -1,21 +1,20 @@
-import { MyClass } from "../src/main";
+import { MyClass, main } from "../src/main";
 
-class MockedMyClass {
-  myAttribute!: (param: string) => any;
-}
+type Callback = (param: string) => any;
 
-describe("MockedMyClass", () => {
-  beforeAll(()=>jest.clearAllMocks())
+describe("temp", () => {
+  beforeAll(() => jest.clearAllMocks());
+
   test("testCase1", () => {
-    
-    const mockedClass = new MockedMyClass();
-    mockedClass.myAttribute = jest.fn((param: string) => param);
-
     const myClass = new MyClass();
+    const mockedMethod = jest.fn((func: Callback) => "Beta");
+    const spy = jest
+      .spyOn(myClass, "lambdaTest")
+      .mockImplementation(mockedMethod);
 
-    let spy = jest.spyOn(myClass, "lambdaTest").mockImplementation((fn) => fn("Beta"));
-    expect(mockedClass.myAttribute("Beta")).toBe("Beta");
-    expect(myClass.lambdaTest(mockedClass.myAttribute)).toBe("Beta");
-    spy.mockRestore();
+    const output = main(myClass);
+
+    expect(spy).toBeCalled();
+    expect(output).toBe("Beta");
   });
 });
