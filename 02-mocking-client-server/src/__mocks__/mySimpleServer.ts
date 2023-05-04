@@ -1,8 +1,8 @@
 export class MySimpleServer {
   constructor() {
-    console.log("constructed mocked");
+    console.log("Constructor mocked");
   }
   start() {
-    console.log("Starting server");
+    console.log("Starting server mocked");
   }
 }
