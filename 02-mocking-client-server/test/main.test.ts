@@ -34,5 +34,10 @@ describe("Testing the more complex Server and Client", () => {
 
     const server = new MyServer();
     const client = new MyClient();
+
+    expect(client.subscribe()).toBe("Subscribed to a topic");
+    expect(client.unsubscribe()).toBe("Unsubscribed from a topic");
+    expect(client.publish()).toBe("Published a message");
+    expect(client.disconnect()).toBe("Disconnected");
   });
 });
