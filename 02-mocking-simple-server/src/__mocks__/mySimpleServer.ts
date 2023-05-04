@@ -3,6 +3,6 @@ export class MySimpleServer {
     console.log("Constructor mocked");
   }
   start() {
-    console.log("Starting server mocked");
+     return "Starting server mocked";
   }
 }

@@ -12,6 +12,7 @@ describe("Testing the simple server", () => {
     const server = new Server();
 
     startServer(server);
+    expect(server.start()).toBe("Starting server mocked");
     expect(server).toBeInstanceOf(MySimpleServer);
 
     jest.restoreAllMocks();
