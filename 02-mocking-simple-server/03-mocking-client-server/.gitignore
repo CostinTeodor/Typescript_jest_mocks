@@ -1,0 +1,9 @@
+/dist/
+/out/
+/build/
+/node_modules/
+.env
+.env.local
+.vscode/
+.idea/
+*.js
