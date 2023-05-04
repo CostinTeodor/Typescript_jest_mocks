@@ -1,13 +1,7 @@
 import { startServer } from "../src/main";
-
-class MySimpleServer {
-  constructor() {
-    console.log("constructed mocked");
-  }
-  start() {
-    console.log("Starting server");
-  }
-}
+import { MySimpleServer } from "../src/__mocks__/mySimpleServer";
+import { MockedServer } from "../src/__mocks__/server";
+import { MockedClient } from "../src/__mocks__/client";
 
 describe("Testing the simple server", () => {
   test("Server", () => {
@@ -30,6 +24,17 @@ describe("Testing the simple server", () => {
 
 describe("Testing the more complex Server and Client", () => {
   test("Publish and Subscribe methods", () => {
+    jest.mock("../src/server/myServer", () => {
+      MyServer: MockedServer
+    })
+    jest.mock("../src/client/client", () => {
+      MyClient: MockedClient
+    })
+
+    const { MyServer } = require("../src/server/myServer");
+    const {MyClient } = require("../src/client/client");
+
     
-  })
-})
+
+  });
+});

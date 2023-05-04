@@ -2,7 +2,7 @@ import { WebSocket as WebSocketType } from "ws";
 const WebSocket = require("ws");
 import * as readlineSync from "readline-sync";
 
-class MyClient {
+export class MyClient {
   private socket: WebSocketType;
   private subscribedTopic: string | null = null;
 
