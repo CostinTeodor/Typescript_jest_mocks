@@ -5,8 +5,8 @@ import * as readlineSync from "readline-sync";
 export class MyClient {
   private socket: WebSocketType;
   private subscribedTopic: string | null = null;
-
-  constructor(url: string) {
+  private attribute: any;
+    constructor(url: string) {
     this.socket = new WebSocket(url);
     this.socket.on("open", () => {
       this.processCommands();
@@ -65,6 +65,25 @@ export class MyClient {
 
     this.disconnect();
   }
-}
+
+  processMessage(callback: (message: string) => void) {
+    this.socket.on("message", (data: Buffer[]) => {
+      const messageStr = Buffer.concat(data).toString();
+      const message = JSON.parse(messageStr);
+      if (message.topic === this.subscribedTopic) {
+        this.attribute = callback(message.data);
+      }
+    });
+  }
+  
+  }
 
 const client = new MyClient("ws://localhost:8080");
+
+client.subscribe("someTopic");
+
+// client.processMessage((message) => {
+//   console.log("Received message:", message);
+//   const modifiedMessage = message.toUpperCase() + " - PROCESSED";
+//   client.publish(modifiedMessage);
+// });

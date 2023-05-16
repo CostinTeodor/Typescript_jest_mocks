@@ -7,7 +7,7 @@ describe("temp", () => {
 
   test("testCase1", () => {
     const myClass = new MyClass();
-    const mockedMethod = jest.fn((func: Callback) => "Beta");
+    const mockedMethod = jest.fn(() => "Beta");
     const spy = jest
       .spyOn(myClass, "lambdaTest")
       .mockImplementation(mockedMethod);

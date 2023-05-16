@@ -1,4 +1,5 @@
 export class MockedClient {
+  // private attribute = ;
   constructor() {
     console.log("Mocked Client");
   }
